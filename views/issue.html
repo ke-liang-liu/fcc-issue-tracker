@@ -47,9 +47,14 @@
           {
             var issues= [];
             data.forEach(function(ele) {
-              console.log(ele);
-              var openstatus;
-              (ele.open) ? openstatus = 'open' : openstatus = 'closed';
+              var openstatus, buttontext;
+              if (ele.open===true || ele.open==='true') {
+                openstatus = 'open';
+                buttontext = 'close?';
+              } else if (ele.open===false || ele.open==='false') {
+                openstatus = 'closed';
+                buttontext = 'reopen?'
+              }
               var single = [
                 '<div class="issue '+openstatus+'">',
                 '<p class="id">id: '+ele._id+'</p>',
@@ -60,12 +65,14 @@
                 '<br>',
                 '<p class="id"><b>Created by:</b> '+ele.created_by+'  <b>Assigned to:</b> '+ele.assigned_to,
                 '<p class="id"><b>Created on:</b> '+ele.created_on+'  <b>Last updated:</b> '+ele.updated_on,
-                '<br><a href="#" class="closeIssue" id="'+ele._id+'">close?</a> <a href="#" class="deleteIssue" id="'+ele._id+'">delete?</a>',
+                '<br>',
+                `<button href="#" class="closeIssue" id=${ele._id}>${buttontext}</button>`,
+                '<button href="#" class="deleteIssue" id="'+ele._id+'">delete?</button>',
                 '</div>'
-                
               ];
               issues.push(single.join(''));
             });
+            console.log(issues[0])
             $('#issueDisplay').html(issues.join(''));
           }
         });
@@ -82,11 +89,17 @@
         });
         
         $('#issueDisplay').on('click','.closeIssue', function(e) {
+          let open;
+          if ($(this).text() === 'close?') {
+            open = false;
+          } else if ($(this).text() === 'reopen?') {
+            open = true;
+          }
           var url = "/api/issues/"+currentProject;
           $.ajax({
             type: "PUT",
             url: url,
-            data: {_id: $(this).attr('id'), open: false},
+            data: {_id: $(this).attr('id'), open: open},
             success: function(data) { alert(data); window.location.reload(true); }
           });
           e.preventDefault();

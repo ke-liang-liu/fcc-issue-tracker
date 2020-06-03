@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/style.css">
   </head>
   <body>
     <header>
@@ -14,6 +15,12 @@
         ISQA_4 - Issue Tracker
       </h1>
     </header>
+    <div style='margin-left: 5%; margin-top: 5%'>
+      <h3>Please enter a project name</h3>
+      <form id="projectnameForm" method="post" class="border">
+        <input id="projectname" type="text" placeholder="Project-name" style="width: 100px; height:23px; margin-right:10px" ><button type="submit">Submit</button>
+      </form><br>
+    </div>
     <div id='userstories' style='margin-left: 5%; margin-top: 5%'>
       <h3>User Stories</h3>
       <ol>
@@ -35,7 +42,9 @@
       <br><br>
       <h2><a href='/apitest/'>EXAMPLE: Go to <i>/apitest/</i> project issues</a></h2>
     </div>
+    
     <hr style='margin: 50px'>
+<!-- 
     <div id='testui' style='margin-left: 5%'>
       <h2 style="text-align: left">API Tests:</h2>
       <h3>Submit issue on <i>apitest</i></h3>
@@ -64,14 +73,22 @@
         <button type="submit">Delete Issue</button>
       </form>
       <code id='jsonResult'></code>
-    </div>
+    </div> 
     <hr style='margin: 50px; margin-top: 200px'>
+-->
+    
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
     <script>
       $(function() {
+        $('#projectnameForm').submit(function(e) {
+            let projectname = $('#projectname').val();
+            projectname = projectname.trim().replace(/\s+/g, "-"); //replace space with -
+            $(this).attr('action', '/' + projectname);
+        })
+        
         $('#testForm').submit(function(e) {
           $.ajax({
             url: '/api/issues/apitest',

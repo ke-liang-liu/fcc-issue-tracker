@@ -111,7 +111,7 @@ suite('Functional Tests', function() {
           })
       });
       
-      test.only('One field to update', function(done) {
+      test('One field to update', function(done) {
         let _id = '5ec3a2193e5da50965b1f117';
         chai.request(server)
           .put('/api/issues/func_test')

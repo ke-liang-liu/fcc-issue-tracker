@@ -30,7 +30,7 @@ module.exports = function (app) {
         filter.open = false;
       }
       MongoClient.connect(CONNECTION_STRING, (err, client) => {
-        const db = client.db('test2')
+        const db = client.db('fcc-issue-tracker')
         db.collection(project).find(filter).toArray((err, docs) => {
           if (err) { console.log(err) };
           res.json(docs);
@@ -59,7 +59,7 @@ module.exports = function (app) {
         }     
         
         MongoClient.connect(CONNECTION_STRING, (err, client) => {
-          const db = client.db('test2');
+          const db = client.db('fcc-issue-tracker');
           if(err) {
               console.log('Database error: ' + err);
           } else {
@@ -81,7 +81,6 @@ module.exports = function (app) {
       var project = req.params.project;
       var _id = req.body._id;
       var filter = { _id: ObjectId(_id) }
-      console.log(filter);      
       for (const property in req.body) {
         if (req.body[property] === '') {
           delete req.body[property];
@@ -92,12 +91,11 @@ module.exports = function (app) {
         res.send('No body, please enter again!') 
       }
       MongoClient.connect(CONNECTION_STRING, (err, client) => {
-        const db = client.db('test2');
+        const db = client.db('fcc-issue-tracker');
         if(err) {
               console.log('Database error: ' + err);
         } else {
           console.log('Database connect sussessfully');
-          console.log(req.body)
           db.collection(project).updateOne(filter, {$set: req.body}, { upsert: true }, function(err, doc) {
             if(err) {
               res.json(err)
@@ -120,9 +118,8 @@ module.exports = function (app) {
           res.json('_id error');
       }
       var filter = {_id: ObjectId(_id)} // Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
-      console.log(filter);
       MongoClient.connect(CONNECTION_STRING, (error, client) => {
-        const db = client.db('test2');
+        const db = client.db('fcc-issue-tracker');
         db.collection(project).deleteOne(filter, function(err, doc) {
           if (err) {
             res.json('_id error');

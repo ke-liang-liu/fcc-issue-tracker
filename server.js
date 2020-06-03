@@ -33,6 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.route('/:project/')
   .get(function (req, res) {
     res.sendFile(process.cwd() + '/views/issue.html');
+  })
+  .post(function (req, res) {
+    res.sendFile(process.cwd() + '/views/issue.html');
   });
 
 //Index page (static HTML)
@@ -57,7 +60,7 @@ app.use(function(req, res, next) {
 //Start our server and tests!
 app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port " + process.env.PORT);
-  if(process.env.NODE_ENV==='testXXX') {
+  if(process.env.NODE_ENV==='test') {
     console.log('Running Tests...');
     setTimeout(function () {
       try {
