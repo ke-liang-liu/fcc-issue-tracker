@@ -1,11 +1,5 @@
-**FreeCodeCamp**- Information Security and Quality Assurance
-------
+## Information Security and Quality Assurance Projects - Issue Tracker
 
-Project Issue Tracker
+**[DEMO website](https://fcc-issue-tracker-liu.glitch.me/)**
 
-1) SET NODE_ENV to `test` without quotes and set DB to your mongo connection string in .env file
-2) Complete the project in `routes/api.js` or by creating a handler/controller
-3) You will add any security features to `server.js`
-4) You will create all of the functional tests in `tests/2_functional-tests.js`
-
-
+![issueTracker](https://user-images.githubusercontent.com/55439246/83650119-520a4300-a5fb-11ea-8406-7836bdec2be7.png)
