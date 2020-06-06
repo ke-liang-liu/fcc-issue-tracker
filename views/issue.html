@@ -35,6 +35,7 @@
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
+    <script src="/public/tools.js"></script>
     <script>
       $(function() {
         var currentProject = window.location.pathname.replace(/\//g, "");;
@@ -64,7 +65,7 @@
                 '<p>'+ele.status_text+'</p>',
                 '<br>',
                 '<p class="id"><b>Created by:</b> '+ele.created_by+'  <b>Assigned to:</b> '+ele.assigned_to,
-                '<p class="id"><b>Created on:</b> '+ele.created_on+'  <b>Last updated:</b> '+ele.updated_on,
+                '<p class="id"><b>Created on:</b> '+formatDate(ele.created_on)+'  <b>Last updated:</b> '+formatDate(ele.updated_on),
                 '<br>',
                 `<button href="#" class="closeIssue" id=${ele._id}>${buttontext}</button>`,
                 '<button href="#" class="deleteIssue" id="'+ele._id+'">delete?</button>',

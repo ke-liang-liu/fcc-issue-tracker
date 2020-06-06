@@ -2,4 +2,4 @@
 
 **[DEMO website](https://fcc-issue-tracker-liu.glitch.me/)**
 
-![issueTracker](https://user-images.githubusercontent.com/55439246/83650119-520a4300-a5fb-11ea-8406-7836bdec2be7.png)
+![issueTracker2](https://user-images.githubusercontent.com/55439246/83947139-91819b00-a858-11ea-8bd2-16a6bfc668f5.png)
