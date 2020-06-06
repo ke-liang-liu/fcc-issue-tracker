@@ -1,4 +1,4 @@
-## Information Security and Quality Assurance Projects - Issue Tracker
+## FreeCodeCamp - Information Security and Quality Assurance Projects - Issue Tracker
 
 **[DEMO website](https://fcc-issue-tracker-liu.glitch.me/)**
 
